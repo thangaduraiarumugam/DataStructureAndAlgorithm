@@ -1,14 +1,14 @@
-    let _partition =  (arr,start,end)=>{
-    let pivot =arr[end];
-    let boundary = start-1;
-    
-    for(let i=start;i<=end;i++){
-        if(arr[i]<pivot){
-            _swap(arr,i, ++boundary);
+let _partition =  (arr,start,end)=>{
+        let pivot =arr[end];
+        let boundary = start-1;
+        
+        for(let i=start;i<=end;i++){
+            if(arr[i]<pivot){
+                _swap(arr,i, ++boundary);
+            }
         }
-    }
-    
-    return boundary;
+        
+        return boundary;
 };
 let _swap=(arr, first , second)=>{
     let temp = arr[first];

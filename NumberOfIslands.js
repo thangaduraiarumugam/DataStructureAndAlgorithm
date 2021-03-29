@@ -46,3 +46,29 @@ let arr = [
 [1, 0, 1]
 ];
 console.log(numberOfIslands(arr));
+
+}
+}
+return -1;
+};
+
+
+let tempa=[];
+let final=[];
+function backtrack(tempa,nums){
+    if(nums.length===0){
+        final.push(tempa.slice());
+        return;
+    }//123 --> 1 --> 2 --> 3
+    //23 -->
+    //3
+    for(let i=0;i<nums.length;i++){
+        tempa.push(nums[i]);
+        nums.splice(i,1);
+        backtrack(tempa,nums,final);
+        nums.splice(i,0,tempa.pop());
+
+    }
+}
+backtrack(tempa,nums,final);
+return final;
