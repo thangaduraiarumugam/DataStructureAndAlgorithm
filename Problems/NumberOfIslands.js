@@ -47,10 +47,6 @@ let arr = [
 ];
 console.log(numberOfIslands(arr));
 
-}
-}
-return -1;
-};
 
 
 let tempa=[];
