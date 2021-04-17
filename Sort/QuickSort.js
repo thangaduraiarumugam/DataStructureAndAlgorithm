@@ -12,7 +12,6 @@ const _swap = (arr, left,right)=>{
     arr[right] = temp;
 };
 const _partition =(arr,start,end)=>{
-    let left = start;
     let boundary = start-1;
 
     for(let i=start;i<=end;i++){
@@ -33,4 +32,4 @@ const quickSort =(array)=>{
     return array;
 }
 
-console.log(quickSort([3,1,5,10,4,6]));
+console.log(quickSort([5,3,4,2,1]));

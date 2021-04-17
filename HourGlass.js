@@ -1,28 +1,28 @@
-const hourglassSum = (arr) => {
-    console.log(arr);
-    let maxSum = 0;
+function hourglassSum(arr) {
+    
+    let maxSum = Number.MIN_SAFE_INTEGER;
     for(let i=0;i<arr.length;i++){
         for(let j=0;j<arr[0].length;j++){
+            
             let row = i;
             let col = j;
             let topRow = arr[row-1];
             let bottomRow = arr[row+1];
-            let topFirst = topRow !==undefined ?topRow[j-1]!=undefined? topRow[j-1]:0:0;
-            let topSecond =topRow !==undefined ?topRow[j]!=undefined? topRow[j]:0:0;
-            let topThird =topRow !==undefined ?topRow[j+1]!=undefined? topRow[j+1]:0:0;
-            let middle = arr[row][col];
-            let bottomFirst = bottomRow !== undefined 
-                                     ? bottomRow[j-1] !== undefined
-                                        ? bottomRow[j-1] : 0 : 0;
-            let bottomSecond =bottomRow !== undefined 
-                                     ? bottomRow[j] !== undefined
-                                        ? bottomRow[j] : 0 : 0;
-            let bottomThird =bottomRow !== undefined 
-                                     ? bottomRow[j+1] !== undefined
-                                        ? bottomRow[j+1] : 0 : 0;
-            let total = topFirst +  topSecond + topThird + middle 
-                            + bottomFirst +bottomSecond + bottomThird;
-             maxSum = Math.max(maxSum,total);
+            if(topRow !==undefined && bottomRow !==undefined 
+            && topRow[j-1]!==undefined && topRow[j] !== undefined
+            && topRow[j+1] !== undefined && bottomRow[j-1] !== undefined
+            && bottomRow[j+1] !== undefined && bottomRow[j] !== undefined){
+                let topFirst = topRow[j-1];
+                let topSecond =topRow[j];
+                let topThird =topRow[j+1];
+                let middle = arr[row][col];
+                let bottomFirst = bottomRow[j-1];
+                let bottomSecond = bottomRow[j];
+                let bottomThird = bottomRow[j+1];
+                let total = topFirst +  topSecond + topThird + middle 
+                                + bottomFirst +bottomSecond + bottomThird;
+                maxSum = Math.max(maxSum,total);
+            }
         }
     }
     return maxSum;

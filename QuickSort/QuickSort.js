@@ -1,5 +1,5 @@
 let _partition =  (arr,start,end)=>{
-        let pivot =arr[end];
+        let pivot = arr[end];
         let boundary = start-1;
         
         for(let i=start;i<=end;i++){
@@ -7,6 +7,7 @@ let _partition =  (arr,start,end)=>{
                 _swap(arr,i, ++boundary);
             }
         }
+        _swap(arr,end, boundary);
         
         return boundary;
 };
