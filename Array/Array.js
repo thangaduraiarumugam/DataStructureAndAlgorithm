@@ -37,9 +37,8 @@ class Array {
     for(let i = index;i<this.length-1;i++){
       this.items[i] = this.items[i+1];
     }
-    delete this.items[this.length-1];
-    this.length--;
-    return deletedItem;
+    this.pop();
+    
   }
   get(index){
     return this.items[index];

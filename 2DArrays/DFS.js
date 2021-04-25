@@ -1,25 +1,29 @@
-let search = (arr, row = 0, col = 0, arr2 = []) => {
-  let item = arr[row][col];
-  let rowSize = arr.length - 1
-  let columnSize =arr[0].length-1 ;
-  
-  //console.log(arr[row][col])
-  arr2.push(item);
-  
-  //top
-  if (row - 1 >= 0 && arr2.indexOf(arr[row-1][col])==-1) {
-    row--;
-  } else if (col + 1 <= columnSize && arr2.indexOf(arr[row][col+1])==-1) {
-    col++;
-  } else if (row + 1 <= rowSize && arr2.indexOf(arr[row+1][col])==-1) {
-    row++;
-  } else if (col - 1 >= 0 && arr2.indexOf(arr[row][col-1])==-1) {
-    col--;
-  }else{
-      return arr2;
-  }
+const directions=[[-1,0],[0,1],[1,0],[0,-1]];
 
-  return search(arr, row, col, arr2);
+let search = (arr) => {
+
+  let values =[];
+  let seen = new Array(arr.length).fill(0).map(()=>new Array(arr[0].length).fill(false));
+
+  let DFS =(arr,row,col,values,seen)=>{
+    if(row<0 || row>=arr.length || col<0 || col >=arr[0].length || seen[row][col]){
+      return;
+    }
+  
+    let item = arr[row][col];
+    values.push(item);
+    seen[row][col]=true;
+    
+    for(let i=0;i<directions.length;i++){
+      let curRow = directions[i][0]+row;
+      let curCol = directions[i][1]+col;
+      DFS(arr,curRow,curCol,values,seen);
+      
+    }
+    
+  };
+  DFS(arr,0,0,values,seen);
+  return values;
 };
 
 let array2D = [
